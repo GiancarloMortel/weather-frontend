@@ -1,0 +1,49 @@
+h1 {
+    font-weight: normal;
+    color: #373737;
+}
+
+.searchbar {
+    border: 1px solid #6c757d;
+    background-color: #f8f9fa;
+}
+
+.searchBox {
+    width: 50%;
+}
+
+.citySearchButton {
+    background-color: #c0b283;
+}
+
+.citylist {
+    border-left: 1px solid #6c757d;
+    border-right: 1px solid #6c757d;
+    padding: 0px;
+    margin: auto;
+}
+
+.cityButton {
+    height: 2.5em;
+    width: 100%;
+    border-radius: 0px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.citySearching {
+    height: 2.5em;
+    display: flex;
+    color: #ffffff;
+    background-color: #17a2b8;
+    align-items: center;
+    justify-content: center;
+}
+
+.cityNotFound {
+    height: 2.5em;
+    display: flex;
+    color: #ffffff;
+    background-color: #e87b85;
+    align-items: center;
+    justify-content: center;
+}
