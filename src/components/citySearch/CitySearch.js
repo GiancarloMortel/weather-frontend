@@ -40,52 +40,56 @@ const CitySearch = (props) => {
 
         // enable loading screen
         setLoadingCities(true);
-
-        // clear any cities
-        setCityObject([]);
-
-        setCityPlaceholder(cityInput);
-        setCityInput('');
         
         // hides weather info
         setCitySelected(false);
         liftCitySelected(false);
 
+        // clear any cities
+        setCityObject([]);
+        setCityPlaceholder(cityInput);
+
         // get list of cities
         const getCityApi = () => {
 
-            // get list of cities
-            const url = `http://localhost:9000/city/${cityInput}`;
-            const promise = axios.get(url);
-            promise
-                .then((res) => {
+            // check for empty string
+            if (cityInput === '') {
+                setCityFound(false);
+            }
+            else {
+                // get list of cities
+                const url = `http://localhost:5000/city/${cityInput}`;
+                const promise = axios.get(url);
+                promise
+                    .then((res) => {
 
-                    // check if city not found
-                    if (res.data.length === 0) {
+                        // check if city not found
+                        if (res.data.length === 0) {
+                            setCityFound(false);
+                            return;
+                        }
+
+                        // city found
+                        setCityFound(true);
+                
+                        // create list to display
+                        let cityObjList = [];
+                
+                        for (let i in res.data) {
+                            let newObj = {
+                            value: res.data[i].id,
+                            state: res.data[i].state,
+                            label: `${res.data[i].name}, ${res.data[i].state}`
+                            };
+                            cityObjList.push(newObj);
+                        }
+                        setCityObject(cityObjList);
+                        setLoadingCities(false);
+                    })
+                    .catch((err) => {
                         setCityFound(false);
-                        return;
-                    }
-
-                    // city found
-                    setCityFound(true);
-            
-                    // create list to display
-                    let cityObjList = [];
-            
-                    for (let i in res.data) {
-                        let newObj = {
-                        value: res.data[i].id,
-                        state: res.data[i].state,
-                        label: `${res.data[i].name}, ${res.data[i].state}`
-                        };
-                        cityObjList.push(newObj);
-                    }
-                    setCityObject(cityObjList);
-                    setLoadingCities(false);
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
+                    });
+            }
         };
         getCityApi();
     };

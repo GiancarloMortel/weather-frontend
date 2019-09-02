@@ -5,10 +5,10 @@ import axios from 'axios';
 const Weather = (props) => {
 
   // values and methods from App
-  const citySelected = props.citySelected;
   const stateVal = props.stateVal;
 
   //// STATES ////
+  const [citySelected, setCitySelected] = useState(props.citySelected);
   const [timezoneVal, setTimezoneVal] = useState(0);
   const [weatherTimeVal, setWeatherTimeVal] = useState(0);
   const [weatherVal, setWeatherVal] = useState('');
@@ -94,7 +94,7 @@ const Weather = (props) => {
   // when cityid changed get weather
   useEffect(() => {
     const getWeatherApi = () => {
-      const url = `http://localhost:9000/weather/${props.cityId}`;
+      const url = `http://localhost:5000/weather/${props.cityId}`;
       const promise = axios.get(url);
   
       promise
@@ -132,7 +132,7 @@ const Weather = (props) => {
           setSunsetVal(weather.sys.sunset);
         })
         .catch((err) => {
-          console.log(err);
+          setCitySelected(false);
       });
     };
     getWeatherApi();

@@ -20,20 +20,33 @@ function App() {
   const liftCitySelected = (selected) => setCitySelected(selected);
   const liftStateVal = (state) => setStateVal(state);
 
-  return (
-    <div>
-      <CitySearch 
-        liftCityId={liftCityId} 
-        liftCitySelected={liftCitySelected}
-        liftStateVal={liftStateVal}
-      />
-      <Weather 
-        cityId={cityId}
-        citySelected={citySelected}
-        stateVal={stateVal}
-      />
+  if (citySelected) {
+    return (
+      <div>
+        <CitySearch 
+          liftCityId={liftCityId} 
+          liftCitySelected={liftCitySelected}
+          liftStateVal={liftStateVal}
+        />
+        <Weather 
+          cityId={cityId}
+          citySelected={citySelected}
+          stateVal={stateVal}
+        />
     </div>
-  );
+    );
+  }
+  else {
+    return (
+      <div>
+        <CitySearch 
+          liftCityId={liftCityId} 
+          liftCitySelected={liftCitySelected}
+          liftStateVal={liftStateVal}
+        />
+      </div>
+    );
+  }
 }
 
 export default App;
