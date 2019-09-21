@@ -22,7 +22,7 @@ function App() {
 
   if (citySelected) {
     return (
-      <div>
+      <div className='appBox'>
         <CitySearch 
           liftCityId={liftCityId} 
           liftCitySelected={liftCitySelected}
@@ -38,7 +38,7 @@ function App() {
   }
   else {
     return (
-      <div>
+      <div className='appBox'>
         <CitySearch 
           liftCityId={liftCityId} 
           liftCitySelected={liftCitySelected}

@@ -1,26 +1,22 @@
 h1 {
     font-weight: normal;
-    color: #373737;
+    color: #212121;
 }
 
-.searchbar {
-    border: 1px solid #6c757d;
-    background-color: #f8f9fa;
+.input-box {
+    width: 100%;
+    background-color: #cfd8dc;
+    border: 0px;
+    text-align: center;
+    font-weight: 600;
 }
 
-.searchBox {
-    width: 50%;
-}
-
-.citySearchButton {
-    background-color: #c0b283;
-}
-
-.citylist {
-    border-left: 1px solid #6c757d;
-    border-right: 1px solid #6c757d;
-    padding: 0px;
-    margin: auto;
+.input-button {
+    width: 25%;
+    background-color: #311B92;
+    border: 0px;
+    border-radius: 0px 0px 0px 0px;
+    font-weight: 900;
 }
 
 .cityButton {
@@ -28,22 +24,27 @@ h1 {
     width: 100%;
     border-radius: 0px;
     border-bottom: 1px solid #dee2e6;
+    background-color: #9575cd;
+    border-color: #9575cd;
+    font-weight: 900;
 }
 
 .citySearching {
     height: 2.5em;
     display: flex;
-    color: #ffffff;
-    background-color: #17a2b8;
     align-items: center;
     justify-content: center;
+    background-color: #0d47a1;
+    color: #ffffff;
+    font-weight: 900;
 }
 
 .cityNotFound {
     height: 2.5em;
     display: flex;
-    color: #ffffff;
-    background-color: #e87b85;
     align-items: center;
     justify-content: center;
+    background-color: #b71c1c;
+    color: #ffffff;
+    font-weight: 900;
 }

@@ -1,16 +1,58 @@
+.weather-top {
+  background-color: #9575cd;
+  color: #ffffff;
+}
+
+.weather-bottom {
+  background-color: #263238;
+  color: #ffffff;
+}
+
 .weatherinfo {
-  border-left: 1px solid #6c757d;
-  border-right: 1px solid #6c757d;
-  border-bottom: 1px solid #6c757d;
   height: 2.5em;
-  background-color: #f8f9fa;
-  color: #373737;
 }
 
-.weatherinfo > div {
-  padding-left: 1em;
+.weatherinfo div{
+  display: flex;
+  justify-content: start;
 }
 
-.weather-info {
-  height: 3em;
+.weatherinfo-center {
+  justify-content: center;
+  padding-left: 7.5em;
+  padding-right: 7.5em;
+  font-weight: 500;
+}
+
+.weatherinfo-center div {
+  padding: 0px;
+  margin: auto;
+}
+
+.weatherinfo-right {
+  justify-content: right;
+  padding-right: 2em;
+  margin: auto;
+}
+
+.weatherinfo-left {
+  justify-content: left;
+  padding-left: 2em;
+  margin: auto;
+}
+
+.center-contents {
+  padding: 0px;
+  margin: auto;
+}
+
+.info-city {
+  font-size: 1.5em;
+  font-weight: 900;
+  padding-top: 0.5em;
+}
+
+.info-temp {
+  font-size: 2.5em;
+  font-weight: 900;
 }

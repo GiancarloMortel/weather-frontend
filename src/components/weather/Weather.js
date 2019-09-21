@@ -17,7 +17,6 @@ const Weather = (props) => {
   const [sunsetVal, setSunsetVal] = useState(0);
   const [tempCurrVal, setTempCurrVal] = useState(0);
   const [humidityVal, setHumidtyVal] = useState(0);
-  const [windVal, setWindVal] = useState(0);
   const [cloudsVal, setCloudsVal] = useState(0);
 
   //// COMPONENTS ////
@@ -25,7 +24,41 @@ const Weather = (props) => {
   const DisplayWeather = (props) => {
 
     //// METHODS ////
-    // handles timezone and time format
+    const formatDay = (date) => {
+      const time = new Date(date * 1000);
+      let utcDay = time.getUTCDay();
+      let day = '';
+
+      switch(utcDay) {
+        case 0:
+          day = 'Sunday';
+          break;
+        case 1:
+          day = 'Monday';
+          break;
+        case 2:
+          day = 'Tuesday';
+          break;
+        case 3:
+          day = 'Wednesday';
+          break;
+        case 4:
+          day = 'Thursday';
+          break;
+        case 5:
+          day = 'Friday';
+          break;
+        case 6:
+          day = 'Saturday'
+          break;
+        default:
+          day = 'Error Getting Day'
+          break;
+      }
+
+      return `${day}`;
+    };
+
     const formatTime = (date) => {
       const time = new Date(date * 1000);
       let hours = time.getUTCHours();
@@ -44,12 +77,22 @@ const Weather = (props) => {
     //// COMPONENTS ////
     const DisplayWeatherInfo = (props) => {
       return (
-        <div className='row weatherinfo box'>
-          <div className='col-md-6 box'>
+        <div className={`row weatherinfo ${props.rowClass}`}>
+          <div className={`col-6 ${props.colClass}`}>
             {props.val}{props.unit}
           </div>
-          <div className='col-md-6 box'>
-            {props.desc}
+        </div>
+      );
+    };
+
+    const DisplayWeatherInfoCenter = (props) => {
+      return (
+        <div className='row weatherinfo weatherinfo-center'>
+          <div className='col-6 d-flex justify-content-start'>
+            <strong>{(props.desc).toUpperCase()}</strong>
+          </div>
+          <div className='col-6 d-flex justify-content-end'>
+            {props.val}{props.unit}
           </div>
         </div>
       );
@@ -57,28 +100,42 @@ const Weather = (props) => {
 
     const ShowWeather = (props) => {
       return (
-        <div className='container box'>
-          <DisplayWeatherInfo val={`${cityVal}, ${stateVal}`} desc={'city'} />
-          <DisplayWeatherInfo val={formatTime(weatherTimeVal + timezoneVal)} desc={'timestamp'} />
-          <DisplayWeatherInfo val={weatherVal} desc={'weather'} />
-          <DisplayWeatherInfo val={tempCurrVal} unit='F' desc='current temp' />
-          <DisplayWeatherInfo val={humidityVal} unit='%' desc='humidity' />
-          <DisplayWeatherInfo val={windVal} unit='mph' desc='wind' />
-          <DisplayWeatherInfo val={cloudsVal} unit='%' desc='cloudiness' />
-          <DisplayWeatherInfo val={formatTime(sunriseVal + timezoneVal)} desc='sunrise' />
-          <DisplayWeatherInfo val={formatTime(sunsetVal + timezoneVal)} desc='sunset' />
+        <div className='container'>
+          <div className='weather-top'>
+            <DisplayWeatherInfo 
+              val={`${cityVal}, ${stateVal}`} desc={'city'} 
+              rowClass={'weatherinfo-right'} 
+              colClass={'justify-content-end info-city'} />
+            <DisplayWeatherInfo 
+              val={formatDay(weatherTimeVal + timezoneVal)} 
+              desc={'timestamp'} rowClass={'weatherinfo-right'} 
+              colClass={'justify-content-end'}/>
+            <DisplayWeatherInfo 
+              val={tempCurrVal} 
+              unit='F' 
+              desc='current temp' 
+              className='info-temp' 
+              rowClass={'weatherinfo-left'} 
+              colClass={'justify-content-start info-temp'} />
+            <DisplayWeatherInfo 
+              val={weatherVal} 
+              desc={'weather'} 
+              rowClass={'weatherinfo-left'} 
+              colClass={'justify-content-start'}/>
+          </div>
+          <div className='weather-bottom'>
+            <DisplayWeatherInfoCenter val={humidityVal} unit='%' desc='humidity' />
+            <DisplayWeatherInfoCenter val={cloudsVal} unit='%' desc='cloudiness' />
+            <DisplayWeatherInfoCenter val={formatTime(sunriseVal + timezoneVal)} desc='sunrise' />
+            <DisplayWeatherInfoCenter val={formatTime(sunsetVal + timezoneVal)} desc='sunset' />
+          </div>
         </div>
       );
     };
 
     const HideWeather = (props) => {
       return (
-        <div className='container box'>
-          <div className='row box'>
-            <div className='col-md-12 box'>
-            </div>
-          </div>
-        </div>
+        <div></div>
       );
     };
 
@@ -94,7 +151,7 @@ const Weather = (props) => {
   // when cityid changed get weather
   useEffect(() => {
     const getWeatherApi = () => {
-      const url = `http://localhost:5000/weather/${props.cityId}`;
+      const url = `http://localhost:3000/weather/${props.cityId}`;
       const promise = axios.get(url);
   
       promise
@@ -117,9 +174,6 @@ const Weather = (props) => {
   
           // set humidity
           setHumidtyVal(weather.main.humidity);
-  
-          // set wind
-          setWindVal(weather.wind.speed);
           
           // set weather
           setWeatherVal(weather.weather[0].main);
@@ -139,9 +193,7 @@ const Weather = (props) => {
   }, [props.cityId]);
 
   return (
-    <div>
-      <DisplayWeather />
-    </div>
+    <DisplayWeather />
   );
 };
 

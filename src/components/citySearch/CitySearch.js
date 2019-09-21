@@ -58,7 +58,7 @@ const CitySearch = (props) => {
             }
             else {
                 // get list of cities
-                const url = `http://localhost:5000/city/${cityInput}`;
+                const url = `http://localhost:3000/city/${cityInput}`;
                 const promise = axios.get(url);
                 promise
                     .then((res) => {
@@ -111,23 +111,27 @@ const CitySearch = (props) => {
             };
 
             return (
-                <div className='col-md-12 d-flex justify-content-center box'>
-                    <button 
-                        type='button'
-                        className='btn btn-secondary cityButton'
-                        onClick={submitCity}>
-                        {props.cityName}
-                    </button>
+                <div className='row flex-column'>
+                    <div className='col-12'>
+                        <button 
+                            type='button'
+                            className='btn btn-primary cityButton'
+                            onClick={submitCity}>
+                            {props.cityName}
+                        </button>
+                    </div>
                 </div>
             );
         };
 
         const CityNotFound = () => {
             return (
-                <div className='container box'>
-                    <div className='row box'>
-                        <div className='col-md-12 cityNotFound box'>
-                        City Not Found
+                <div className='container'>
+                    <div className='row'>
+                        <div className='col-12'>
+                            <div className='cityNotFound'>
+                                City Not Found
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -136,50 +140,33 @@ const CitySearch = (props) => {
 
         const ShowCities = () => {
             return (
-                <div className='container citylist box'>
-                    <div className='row box'>
-                        <div className='col-md-12 box'>
-                        <div className='div container box'>
-                            <div className='row d-flex flex-column box'>
-                            {cityObject.map((city) => 
-                                <DisplayCityInfo 
-                                    key={city.value} 
-                                    cityId={city.value}
-                                    cityName={city.label}
-                                    state={city.state}
-                                />
-                            )}
-                            </div>
-                        </div>
-                        </div>
-                    </div>
+                <div className='container'>
+                    {cityObject.map((city) => 
+                        <DisplayCityInfo 
+                            key={city.value} 
+                            cityId={city.value}
+                            cityName={city.label}
+                            state={city.state}
+                        />
+                    )}
                 </div>
             );
         };
 
         const HideCities = () => {
             return (
-                <div className='container box'>
-                <div className='row box'>
-                    <div className='col-md-12 box'>
-                    </div>
-                </div>
-                </div>
+                <div></div>
             );
         };
 
         const LoadingCities = () => {
             return (
-                <div className='container box'>
-                    <div className='row box'>
-                        <div className='col-md-12 d-flex justify-content-center box'>
-                            <button 
-                                type='button'
-                                className='btn btn-info cityButton'
-                                disabled
-                            >
+                <div className='container'>
+                    <div className='row'>
+                        <div className='col-12'>
+                            <div className='citySearching'>
                                 Loading Cities
-                            </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -202,13 +189,12 @@ const CitySearch = (props) => {
 
     return (
         <div>
-            <div className='container searchbar box'>
-                <div className='row box'>
-                    <div className='col-md-12 box'>
-                        <h1 className='d-flex justify-content-center'>Current Weather</h1>
+            <div className='container'>
+                <div className='row '>
+                    <div className='col-12'>
                         <form key={'display-form'} className='d-flex justify-content-center'>
-                            <input key={'display-input'} value={cityInput} placeholder={cityPlaceholder} onChange={handleCityChange}/>
-                            <button className='btn btn-primary' onClick={getCity}>submit</button>
+                            <input className='input-box' key={'display-input'} value={cityInput} placeholder={cityPlaceholder} onChange={handleCityChange}/>
+                            <button className='btn btn-primary input-button' onClick={getCity}>submit</button>
                         </form>
                     </div>
                 </div>
