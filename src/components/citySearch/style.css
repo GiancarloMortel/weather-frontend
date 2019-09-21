@@ -1,8 +1,6 @@
-h1 {
-    font-weight: normal;
-    color: #212121;
-}
-
+/*
+    input where user searches for city
+*/
 .input-box {
     width: 100%;
     background-color: #cfd8dc;
@@ -11,6 +9,9 @@ h1 {
     font-weight: 600;
 }
 
+/*
+    input where user presses submit
+*/
 .input-button {
     width: 25%;
     background-color: #311B92;
@@ -19,6 +20,9 @@ h1 {
     font-weight: 900;
 }
 
+/*
+    selectable city
+*/
 .cityButton {
     height: 2.5em;
     width: 100%;
@@ -29,6 +33,9 @@ h1 {
     font-weight: 900;
 }
 
+/*
+    loading cities display
+*/
 .citySearching {
     height: 2.5em;
     display: flex;
@@ -39,6 +46,9 @@ h1 {
     font-weight: 900;
 }
 
+/*
+    city not found display
+*/
 .cityNotFound {
     height: 2.5em;
     display: flex;

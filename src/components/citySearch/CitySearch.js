@@ -58,6 +58,7 @@ const CitySearch = (props) => {
             }
             else {
                 // get list of cities
+                //const url = `http://ec2-3-91-181-248.compute-1.amazonaws.com/city/${cityInput}`;
                 const url = `http://localhost:3000/city/${cityInput}`;
                 const promise = axios.get(url);
                 promise

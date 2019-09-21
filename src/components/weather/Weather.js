@@ -78,7 +78,7 @@ const Weather = (props) => {
     const DisplayWeatherInfo = (props) => {
       return (
         <div className={`row weatherinfo ${props.rowClass}`}>
-          <div className={`col-6 ${props.colClass}`}>
+          <div className={`col-12 ${props.colClass}`}>
             {props.val}{props.unit}
           </div>
         </div>
@@ -101,33 +101,37 @@ const Weather = (props) => {
     const ShowWeather = (props) => {
       return (
         <div className='container'>
-          <div className='weather-top'>
-            <DisplayWeatherInfo 
-              val={`${cityVal}, ${stateVal}`} desc={'city'} 
-              rowClass={'weatherinfo-right'} 
-              colClass={'justify-content-end info-city'} />
-            <DisplayWeatherInfo 
-              val={formatDay(weatherTimeVal + timezoneVal)} 
-              desc={'timestamp'} rowClass={'weatherinfo-right'} 
-              colClass={'justify-content-end'}/>
-            <DisplayWeatherInfo 
-              val={tempCurrVal} 
-              unit='F' 
-              desc='current temp' 
-              className='info-temp' 
-              rowClass={'weatherinfo-left'} 
-              colClass={'justify-content-start info-temp'} />
-            <DisplayWeatherInfo 
-              val={weatherVal} 
-              desc={'weather'} 
-              rowClass={'weatherinfo-left'} 
-              colClass={'justify-content-start'}/>
-          </div>
-          <div className='weather-bottom'>
-            <DisplayWeatherInfoCenter val={humidityVal} unit='%' desc='humidity' />
-            <DisplayWeatherInfoCenter val={cloudsVal} unit='%' desc='cloudiness' />
-            <DisplayWeatherInfoCenter val={formatTime(sunriseVal + timezoneVal)} desc='sunrise' />
-            <DisplayWeatherInfoCenter val={formatTime(sunsetVal + timezoneVal)} desc='sunset' />
+          <div className='row'>
+            <div className='col-12'>
+              <div className='weather-top'>
+                <DisplayWeatherInfo 
+                  val={`${cityVal}, ${stateVal}`} desc={'city'} 
+                  rowClass={'weatherinfo-right'} 
+                  colClass={'info-city'} />
+                <DisplayWeatherInfo 
+                  val={formatDay(weatherTimeVal + timezoneVal)} 
+                  desc={'timestamp'} rowClass={'weatherinfo-right'} 
+                  colClass={'info-day'}/>
+                <DisplayWeatherInfo 
+                  val={tempCurrVal} 
+                  unit='F' 
+                  desc='current temp' 
+                  className='info-temp' 
+                  rowClass={'weatherinfo-left'} 
+                  colClass={'justify-content-start info-temp'} />
+                <DisplayWeatherInfo 
+                  val={weatherVal} 
+                  desc={'weather'} 
+                  rowClass={'weatherinfo-left'} 
+                  colClass={'justify-content-start'}/>
+              </div>
+              <div className='weather-bottom'>
+                <DisplayWeatherInfoCenter val={humidityVal} unit='%' desc='humidity' />
+                <DisplayWeatherInfoCenter val={cloudsVal} unit='%' desc='cloudiness' />
+                <DisplayWeatherInfoCenter val={formatTime(sunriseVal + timezoneVal)} desc='sunrise' />
+                <DisplayWeatherInfoCenter val={formatTime(sunsetVal + timezoneVal)} desc='sunset' />
+              </div>
+            </div>
           </div>
         </div>
       );
@@ -151,6 +155,7 @@ const Weather = (props) => {
   // when cityid changed get weather
   useEffect(() => {
     const getWeatherApi = () => {
+      // const url = `http://ec2-3-91-181-248.compute-1.amazonaws.com/weather/${props.cityId}`;
       const url = `http://localhost:3000/weather/${props.cityId}`;
       const promise = axios.get(url);
   

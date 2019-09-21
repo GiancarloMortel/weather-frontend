@@ -1,57 +1,106 @@
+/* 
+  area below city search bar
+  contains:
+    city
+    day
+    temp
+    weather description
+*/
 .weather-top {
   background-color: #9575cd;
   color: #ffffff;
 }
 
+/*
+  bottom area showing weather details
+  contains:
+    humidity
+    cloudiness
+    sunrise
+    sunset
+*/
 .weather-bottom {
   background-color: #263238;
   color: #ffffff;
 }
 
+/*
+  individual row containing weather information
+*/
 .weatherinfo {
   height: 2.5em;
 }
 
+/*
+  div within .weatherinfo
+*/
 .weatherinfo div{
-  display: flex;
-  justify-content: start;
+  width: 100%;
 }
 
+/*
+  shifts weather info right
+  affects:
+    city
+    day
+*/
+.weatherinfo-right {
+  text-align: right;
+  padding: 0px;
+  margin: 0px;
+}
+
+/*
+  shifts weather info left
+  affects:
+    temp
+    weather-description
+*/
+.weatherinfo-left {
+  justify-content: left;
+  padding-left: 3em;
+  margin: auto;
+}
+
+/*
+  weather information for .weather-bottom
+*/
 .weatherinfo-center {
   justify-content: center;
   padding-left: 7.5em;
   padding-right: 7.5em;
   font-weight: 500;
+  margin: auto;
 }
 
+/*
+  div within .weatherinfo-center
+*/
 .weatherinfo-center div {
   padding: 0px;
   margin: auto;
 }
 
-.weatherinfo-right {
-  justify-content: right;
-  padding-right: 2em;
-  margin: auto;
-}
-
-.weatherinfo-left {
-  justify-content: left;
-  padding-left: 2em;
-  margin: auto;
-}
-
-.center-contents {
-  padding: 0px;
-  margin: auto;
-}
-
+/*
+  targets city
+*/
 .info-city {
+  padding-top: 0.6em;
+  padding-right: 2em;
   font-size: 1.5em;
   font-weight: 900;
-  padding-top: 0.5em;
 }
 
+/*
+  targets day
+*/
+.info-day {
+  padding-right: 3.1em;
+}
+
+/*
+  targets temp
+*/
 .info-temp {
   font-size: 2.5em;
   font-weight: 900;
