@@ -3,7 +3,7 @@
 */
 .input-box {
     width: 100%;
-    background-color: #cfd8dc;
+    background-color: #ffffff;
     border: 0px;
     text-align: center;
     font-weight: 600;
@@ -14,10 +14,14 @@
 */
 .input-button {
     width: 25%;
-    background-color: #311B92;
+    background-color: #3700b3;
     border: 0px;
     border-radius: 0px 0px 0px 0px;
     font-weight: 900;
+}
+
+.input-button:hover {
+    background-color: #03dac6;
 }
 
 /*
@@ -28,9 +32,14 @@
     width: 100%;
     border-radius: 0px;
     border-bottom: 1px solid #dee2e6;
-    background-color: #9575cd;
-    border-color: #9575cd;
+    background-color: #03dac6;
+    border-color: #03dac6;
     font-weight: 900;
+}
+
+.cityButton:hover {
+    background-color: #018786;
+    border-color: #018786;
 }
 
 /*
@@ -54,7 +63,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #b71c1c;
+    background-color: #b00020;
     color: #ffffff;
     font-weight: 900;
 }
