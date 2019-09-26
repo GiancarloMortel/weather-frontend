@@ -20,9 +20,9 @@
     font-weight: 900;
 }
 
-.input-button:hover {
-    background-color: #03dac6;
-}
+    .input-button:hover {
+        background-color: #03dac6;
+    }
 
 /*
     selectable city
@@ -31,16 +31,16 @@
     height: 2.5em;
     width: 100%;
     border-radius: 0px;
-    border-bottom: 1px solid #dee2e6;
+    border-bottom: 1px solid #e5e5e5;
     background-color: #03dac6;
     border-color: #03dac6;
     font-weight: 900;
 }
 
-.cityButton:hover {
-    background-color: #018786;
-    border-color: #018786;
-}
+    .cityButton:hover {
+        background-color: #018786;
+        border-color: #018786;
+    }
 
 /*
     loading cities display

@@ -20,7 +20,7 @@ body {
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) { 
   .appBox {
-    width: 450px;
+    width: 430px;
   }
 }
 

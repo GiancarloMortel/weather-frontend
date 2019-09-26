@@ -155,7 +155,7 @@ const Weather = (props) => {
   // when cityid changed get weather
   useEffect(() => {
     const getWeatherApi = () => {
-      const url = `http://ec2-34-227-116-199.compute-1.amazonaws.com/weather/${props.cityId}`;
+      const url = `https://localhost:3000/weather/${props.cityId}`;
       const promise = axios.get(url);
   
       promise

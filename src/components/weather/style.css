@@ -31,13 +31,9 @@
   height: 2.5em;
 }
 
-/*
-  div within .weatherinfo
-*/
-.weatherinfo div{
-  width: 100%;
-}
-
+  .weatherinfo div{
+    width: 100%;
+  }
 /*
   shifts weather info right
   affects:
@@ -73,13 +69,10 @@
   margin: auto;
 }
 
-/*
-  div within .weatherinfo-center
-*/
-.weatherinfo-center div {
-  padding: 0px;
-  margin: auto;
-}
+  .weatherinfo-center div {
+    padding: 0px;
+    margin: auto;
+  }
 
 /*
   targets city
